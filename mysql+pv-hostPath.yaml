@@ -1,18 +1,17 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv-nfs
+  name: mysql-pv-volume
   labels:
-    type: nfs
+    type: local
 spec:
   storageClassName: manual
-  persistentVolumeReclaimPolicy: Retain
   capacity:
     storage: 20Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/msql"   #Localização do volume no node que o pod está em execução
+    path: "/mnt/mysql"  #Localização do volume no node que o pod está em execução
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
